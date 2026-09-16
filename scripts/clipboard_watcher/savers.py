@@ -27,7 +27,7 @@ def save_text(meta: dict, payload: dict, output_dir: str):
     data = payload["data"]
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(data, encoding="utf-8")
-    lines = data.count("\n") + 1 if data else 0
+    lines = len(data.splitlines())
     action = "UPDATE" if md == "update" else "SAVE"
     return action, path, lines
 
